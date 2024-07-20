@@ -482,13 +482,21 @@ Route::get('/schoolTest/{schoolNum?}', [UserController::class, 'schoolNumber']);
 Route::get('product-form', [UserController::class, 'formMethod']);
 Route::get('apply-coupon', [UserController::class, 'applyCoupon'])->name('apply-coupon');
 
-Route::get('market',[UserController::class,'marketMethod']);
-Route::get('items',[UserController::class,'price'])->name('mall-items');
-Route::get('/loop',[UserController::class,'loops']);
+Route::get('market', [UserController::class, 'marketMethod']);
+Route::get('items', [UserController::class, 'price'])->name('mall-items');
+Route::get('/loop', [UserController::class, 'loops']);
 
 
 // Bloging System
-Route::group(['prefix' => 'blog', 'as' => 'blog.'], function(){
+Route::group(['prefix' => 'blog', 'as' => 'blog.'], function () {
     Route::get('/', [BlogController::class, 'index'])->name('index');
     Route::get('/create', [BlogController::class, 'create'])->name('create');
+});
+
+
+Route::group(['prefix' => 'ankit', 'as' => 'ankit'], function () {
+    Route::group(['prefix' => 'blog', 'as' => 'blog.'], function () {
+        Route::get('/', [BlogController::class, 'index'])->name('index');
+        Route::get('/create', [BlogController::class, 'create'])->name('create');
+    });
 });
