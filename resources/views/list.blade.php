@@ -1,0 +1,1 @@
+<center><h1>You Are Not Eligible To Take Admission</h1></center>
